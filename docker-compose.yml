@@ -1,0 +1,105 @@
+version: '3'
+
+networks:
+  github509:
+    driver: bridge
+
+services:
+  neo4j:
+    image: neo4j:4.2.3-enterprise
+    hostname: neo4j
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./neo4j/plugins:/plugins
+      - ./ssl:/tmp/certificates
+    depends_on:
+      - broker
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: neo4j/password 
+      NEO4J_dbms_memory_heap_max__size: 2G
+      NEO4J_dbms_logs_debug_level: DEBUG
+      NEO4J_kafka_bootstrap_servers: broker:29093
+      NEO4J_kafka_group_id: "test"
+      NEO4J_kafka_client_id: "neo4j"
+      NEO4J_kafka_enable_auto_commit: "true"
+      NEO4J_kafka_key_deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      NEO4J_kafka_value_deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+      NEO4J_streams_sink_enabled: "true"
+      NEO4J_streams_sink_enabled_to_dbpov2: "true"
+      NEO4J_streams_sink_errors_log_enable: "true"
+      NEO4J_streams_sink_errors_log_include_messages: "true"
+      NEO4J_streams_sink_topic_cypher_testdbpov2_to_dbpov2: "MERGE (n:Label {id: event.id}) ON CREATE SET n += event.properties"
+      NEO4J_streams_sink_topic_cypher_testtopic: "MERGE (n:Label {id: event.id}) ON CREATE SET n += event.properties"
+      NEO4J_kafka_security_protocol: "SSL"
+      NEO4J_kafka_ssl_keystore_location: "/tmp/certificates/kafka.client.keystore.jks"
+      NEO4J_kafka_ssl_keystore_password: "password"
+      NEO4J_kafka_ssl_truststore_location: "/tmp/certificates/kafka.client.truststore.jks"
+      NEO4J_kafka_ssl_truststore_password: "password"
+    networks:
+      - github509
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - 22181:22181
+    volumes:
+      - ./zookeeper/data:/data
+    environment:
+      ZOOKEEPER_SERVER_ID: 1    
+      ZOOKEEPER_CLIENT_PORT: 22181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - github509
+      
+  broker:
+    image: confluentinc/cp-enterprise-kafka
+    hostname: broker
+    container_name: broker
+    ports:
+      - 9092:9092
+      - 29092:29092
+      - 29093:29093
+    depends_on:
+      - zookeeper
+    volumes:
+      - ./ssl:/etc/kafka/secrets
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:22181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,SSL:SSL
+      KAFKA_LISTENERS: PLAINTEXT://:29092,PLAINTEXT_HOST://:9092,SSL://:29093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092,SSL://broker:29093
+      ALLOW_PLAINTEXT_LISTENER: 'yes'    
+      KAFKA_AUTO_OFFSET_RESET: "earliest"
+      KAFKA_SECURITY_INTER_BROKER_PROTOCOL: "SSL"
+      KAFKA_SSL_KEYSTORE_FILENAME: "kafka.server.keystore.jks"
+      KAFKA_SSL_KEYSTORE_CREDENTIALS: "server_keystore_creds"
+      KAFKA_SSL_TRUSTSTORE_FILENAME: "kafka.server.truststore.jks"
+      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: "server_truststore_creds"
+      KAFKA_SSL_KEY_CREDENTIALS: "server_sslkey_creds"
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: " "
+      KAFKA_SSL_CLIENT_AUTH: requested
+    networks:
+      - github509
+  
+  logs_generator:
+    build: .
+    hostname: logs_generator
+    container_name: logs_generator
+    volumes:
+      - ./logs:/data/logs
+      - ./ssl:/certs/
+    depends_on:
+      - broker
+    environment:
+      PYTHONUNBUFFERED: 1
+      LOGS_GENERATOR_kafka_bootstrap_servers: localhost:29092
+      LOGS_GENERATOR_kafka_topic: testtopic
+      LOGS_path: /data/logs
