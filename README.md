@@ -5,7 +5,11 @@ Stream2Graph
 
 ### Data pipeline architecture 
 
+How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
 ![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
+
+Overall End2End Data Pipeline to enhance Streams and Graph-based Online (machine) Learning 
+
 
 ### Services used 
 The used dockerized service are :
