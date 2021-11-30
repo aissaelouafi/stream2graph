@@ -1,5 +1,5 @@
 # Stream2Graph
-A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics Over Knowledge Graph. 
+A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics Over Knowledge Graph. Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifer, R. Chiky, V. Tran, A. Nobial.
 
 ## Overview of materials
 
