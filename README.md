@@ -1,4 +1,4 @@
-# stream2graph
+# Stream2Graph
 Stream2Graph 
 
 ## Docker Installation and Configuration Requirements
