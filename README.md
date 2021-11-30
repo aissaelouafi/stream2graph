@@ -10,7 +10,7 @@ How to process streams events from Kafka and update a knowledge graph data based
 
 Overall of Stream2Graph approach to enhance Streams and Graph-based Online (machine) Learning 
 
-![alt text](https://github.com/aissaelouafi/stream2graph/commit/9266a99958d3d46c78be379693f322565d6b76d9)
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
 
 ### Services used 
 The used dockerized service are :
