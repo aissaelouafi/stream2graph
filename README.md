@@ -15,4 +15,4 @@ The used dockerized service are :
 - Neo4j database
 - Kafka broker
 - Zookeper 
-- Logs genertor image to generate logs 
+- Logs generator image to generate logs 
