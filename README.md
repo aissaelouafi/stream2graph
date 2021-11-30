@@ -23,18 +23,11 @@ The used dockerized service are :
 To run the `stream2graph` pipeline, you need to copy the `logs` folder (Data) to the working directory and run : `docker-compose up -p` to build the `logs-generator` images and install required services.
 
 
-## Docker Installation and Configuration Requirements
+### References on Docker
 
-### Docker Desktop for Mac
-Go to the Docker Desktop for Mac page https://store.docker.com/editions/community/docker-ce-desktop-mac and follow the instructions to download, install, and run Docker.
+**Docker is a tool designed to make it easier to create, deploy, and run applications by using containers**. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code. [More] (https://dev.to/amoniacou/what-is-docker-why-is-it-important-and-necessary-for-developers-part-i-39e5). Some applications of docker can be founed [here](https://www.infoworld.com/article/3310941/why-you-should-use-docker-and-containers.html). 
 
-### Adjusting Docker Resources
-After installing Docker, you must increase the available resources so that Docker is able to launch the Strea2Graph system. The system requires at least 2 GB of available disk space and 2 GiB of available RAM.
-To adjust the available resources, click the Docker icon in the menu bar and select Preferences. On the Settings screen, select Resources.
-
-### References on Docker compose
-
-Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. To learn more about [all the features of Compose, see the list of features.](https://docs.docker.com/compose/#features) 
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration. To learn more about [all the features of Compose, see the list of features.](https://docs.docker.com/compose/#features) 
 
 Compose works in all environments: production, staging, development, testing, as well as CI workflows. You can learn more about each case in [Common Use Cases](https://docs.docker.com/compose/#common-use-cases).
 
