@@ -8,8 +8,9 @@ Stream2Graph
 How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
 ![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
 
-Overall End2End Data Pipeline to enhance Streams and Graph-based Online (machine) Learning 
+Overall of Stream2Graph approach to enhance Streams and Graph-based Online (machine) Learning 
 
+![alt text](https://github.com/aissaelouafi/stream2graph/commit/9266a99958d3d46c78be379693f322565d6b76d9)
 
 ### Services used 
 The used dockerized service are :
