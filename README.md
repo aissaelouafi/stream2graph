@@ -6,7 +6,8 @@ A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics Ove
 How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
 ![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
 
-Overall of Stream2Graph approach to enhance Streams and Graph-based Online (machine) Learning 
+Overall of Stream2Graph approach to enhance Streams and Graph-based Online (machine) Learning.
+Each block is an independant tool to allow flexibility of the data pipeline which can be extended for further analytics.
 
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
 
