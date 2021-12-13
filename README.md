@@ -1,5 +1,6 @@
-# Stream2Graph
-A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics Over Knowledge Graph. Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifer, R. Chiky, V. Tran, A. Nobial.
+# Stream2Graph Description
+A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics on Data stored into Knowledge Graph.
+Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
 ### Data pipeline architecture 
 
@@ -13,15 +14,20 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 
 ### Services used 
 The used dockerized service are :
-- Neo4j database
-- Kafka broker
+- Kafka broker (Real-time Events & Streams ingestion)
+- River (Online and Incremental Learning)
+- Graph Data bases Neo4j and TigerGraph
 - Zookeper 
 - Logs generator image to generate logs 
+- Fake Data generator (Graph and Logs)
 
 ### How to run the the data pipeline with Docker ?
 
 To run the `stream2graph` pipeline, you need to copy the `logs` folder (Data) to the working directory and run : `docker-compose up -p` to build the `logs-generator` images and install required services.
 
+### Contributing
+
+### Docker structure
 
 ### References on Docker
 
