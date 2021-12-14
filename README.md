@@ -12,6 +12,15 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
 
+### Features
+- Graph and Linear Data generator
+- Unstructured Data Parsing
+- Streams generator (from any data source)
+- Strams ingestion (Apache Kafka)
+- Graph storage (Neo4j or TigerGraph)
+- Graph Algorithms ( Scikit-network, Neo4j, TigerGraph )
+- Online and Incremental Learning (River)
+
 ### Services used 
 The used dockerized service are :
 - Kafka broker (Real-time Events & Streams ingestion)
