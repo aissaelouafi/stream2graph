@@ -15,11 +15,11 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 
 ## Features
 - Graph and Linear Data generator
-- Unstructured Data Parsing
+- Unstructured Data Parsing (Logstach)
 - Streams generator (from any data source)
 - Strams ingestion (Apache Kafka)
 - Graph storage (Neo4j or TigerGraph)
-- Graph Algorithms ( Scikit-network, Neo4j, TigerGraph )
+- Graph Algorithms (Scikit-network, Neo4j, TigerGraph )
 - Online and Incremental Learning (River)
 
 ## Services used 
