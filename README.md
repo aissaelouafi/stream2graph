@@ -32,9 +32,11 @@ The used dockerized service are :
 
 ### How to run the the data pipeline with Docker ?
 
-To run the `stream2graph` pipeline, you need to copy the `logs` folder (Data) to the working directory and run : `docker-compose up -p` to build the `logs-generator` images and install required services.
+To run the `stream2graph` pipeline, 
+- copy the `logs` folder (Data) to the working directory 
+- run : `docker-compose up -p` to build the `logs-generator` images install required services.
 
-### Contributing
+### Contributing 
 
 ### Docker structure
 
