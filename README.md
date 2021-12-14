@@ -1,8 +1,9 @@
-# Stream2Graph Description
+# Stream2Graph 
 **Stream2Graph : A Dockerized Data Pipeline for Stream-based Analytics over Knowledge Graph**
 Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
-## Data pipeline architecture 
+
+## Data pipeline architecture
 
 How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
 ![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
