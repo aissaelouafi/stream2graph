@@ -2,7 +2,7 @@
 A Docker-based Data Pipeline to Enhance Streams Learning and Graph Analytics on Data stored into Knowledge Graph.
 Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
-### Data pipeline architecture 
+## Data pipeline architecture 
 
 How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
 ![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
@@ -12,7 +12,7 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
 
-### Features
+## Features
 - Graph and Linear Data generator
 - Unstructured Data Parsing
 - Streams generator (from any data source)
@@ -21,7 +21,7 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 - Graph Algorithms ( Scikit-network, Neo4j, TigerGraph )
 - Online and Incremental Learning (River)
 
-### Services used 
+## Services used 
 The used dockerized service are :
 - Kafka broker (Real-time Events & Streams ingestion)
 - River (Online and Incremental Learning)
@@ -36,11 +36,11 @@ To run the `stream2graph` pipeline,
 - copy the `logs` folder (Data) to the working directory 
 - run : `docker-compose up -p` to build the `logs-generator` images install required services.
 
-### Contributing 
+## Contributing 
 
-### Docker structure
+## Docker structure
 
-### References on Docker
+## References on Docker
 
 **Docker is a tool designed to make it easier to create, deploy, and run applications by using containers**. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code. [More about docker for debveloppement](https://dev.to/amoniacou/what-is-docker-why-is-it-important-and-necessary-for-developers-part-i-39e5). Some applications of docker can be founed [here](https://www.infoworld.com/article/3310941/why-you-should-use-docker-and-containers.html). 
 
