@@ -13,13 +13,15 @@ Each block is an independant tool to allow flexibility of the data pipeline whic
 
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
 
-## Features
+## Features optional 
 - Graph and Linear Data generator
 - Unstructured Data Parsing (Logstach)
-- Streams generator (from any data source)
+- Streams generator (from multiple data sources)
 - Strams ingestion (Apache Kafka)
-- Graph storage (Neo4j or TigerGraph)
-- Graph Algorithms (Scikit-network, Neo4j, TigerGraph )
+- Graph storage (Apache AGE + PostgreSQL, Neo4j)
+- Big graph storage (JanusGraph, TigerGraph)
+- Graph Algorithms (Scikit-network, GraphTools, Neo4j, TigerGraph )
+- Distributed Graph Processing (GraphFrames, Apache Gelly) 
 - Online and Incremental Learning (River)
 
 ## Services used 
