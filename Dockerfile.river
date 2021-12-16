@@ -1,0 +1,21 @@
+FROM python:3.8
+
+RUN apt-get update
+
+# Create the working directory
+RUN mkdir /online_learning
+WORKDIR /online_learning
+
+# Copy data and python scripts from local to the working directory
+COPY ./online_learning/online_classification.py . 
+
+# Install python requirements
+# RUN pip install -r requirements.txt
+RUN pip install pandas
+RUN pip install river
+
+# Expose the python script on port
+# EXPOSE 3333
+
+# Run the python script
+CMD ["python","-u","online_classification.py"]

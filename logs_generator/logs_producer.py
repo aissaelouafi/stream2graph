@@ -19,15 +19,20 @@ class LogsProducer():
         self.component_number = component_number
         self.lines_by_components = lines_by_components
         self.kafka_producer = None
+        # tuple to define a specific log file (Syslog/Syslog.log_structured.csv)
+        self.specific_file = None
 
     def create_kafka_producer(self):
         self.kafka_producer = KafkaProducer(value_serializer=lambda v: json.dumps(v).encode('utf-8'))
 
     def read_logs(self):
+        if specific_file != None:
+            return [join(logs_path, self.specific_file)]
+            
         logs_folder = [f for f in listdir(self.logs_path) if "." not in f]
         random_components = random.sample(logs_folders, self.component_number)
         logs_paths = []
-        for component in random_components:
+        for component in random_components:s
             log_folder = join(logs_path, component)
             if self.structured_logs:
                 component_logs_file = [f for f in listdir(join(logs_path, component)) if "structured.csv" in f][0]

@@ -103,3 +103,47 @@ services:
       LOGS_GENERATOR_kafka_bootstrap_servers: localhost:29092
       LOGS_GENERATOR_kafka_topic: testtopic
       LOGS_path: /data/logs
+
+  jobmanager:
+    image: pyflink/playgrounds:1.10.0
+    volumes:
+      - ./events_aggregation:/opt/examples
+    hostname: jobmanager
+    expose:
+      - 6123
+    ports:
+      - 8088:8088
+    command: jobmanager
+    environment:
+      JOB_MANAGER_RPC_ADDRESS: jobmanager
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:22181
+      KAFKA_BOOTSTRAP_SERVER: localhost:9092
+      KAFKA_INPUT_TOPIC: testtopic
+      KAFKA_OUTPUT_TOPIC: resulttopic
+    depends_on: 
+      - broker
+  
+  taskmanager:
+    image: pyflink/playgrounds:1.10.0
+    volumes:
+      - ./events_aggregation:/opt/examples
+      - ./logs:/opt/examples/data
+    hostname: taskmanager
+    expose: 
+      - 6121
+      - 6122
+    depends_on: 
+      - jobmanager
+    command: taskmanager
+    links:
+      - jobmanager:jobmanager
+    environment: 
+      JOB_MANAGER_RPC_ADDRESS: jobmanager
+
+
+  #online_learning:
+  #  build: Dockerfile.river
+  #  hostname: online_learning
+  #  container_name: online_learning
+  #  depends_on:
+  #    - broker
