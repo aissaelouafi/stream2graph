@@ -2,6 +2,9 @@ import os
 from pyflink.datastream import StreamExecutionEnvironment, TimeCharacteristic
 from pyflink.table import StreamTableEnvironment, DataTypes, EnvironmentSettings
 from pyflink.table.descriptors import Schema, Kafka, Json
+from pyflink.table.window import Tumble
+from datetime import datetime, date, time
+
 
 def from_kafka_to_kafka_demo():
     s_env = StreamExecutionEnvironment.get_execution_environment()
@@ -16,19 +19,19 @@ def from_kafka_to_kafka_demo():
                 .use_blink_planner().build())
 
     # register source and sink
-    register_rides_source(st_env)
-    register_rides_sink(st_env)
+    register_syslogs_source(st_env)
+    register_syslogs_sink(st_env)
 
     # query
-    st_env.from_path("source").insert_into("sink")
+    st_env.from_path("syslog_source").insert_into("syslog_output")
 
     # execute
     st_env.execute("2-from_kafka_to_kafka")
 
 
-def register_rides_source(st_env):
+def register_syslogs_source(st_env):
     st_env \
-        .connect(  # declare the external system to connect to
+        .connect(  # declare the external system to connect to (in this case rhe local standalone kafka broker)
         Kafka()
             .version("universal")
             .topic(os.getenv("KAFKA_INPUT_TOPIC"))
@@ -74,10 +77,10 @@ def register_rides_source(st_env):
             .field("rcvdbyte", DataTypes.INT())
             .field("sentpkt", DataTypes.INT())) \
         .in_append_mode() \
-        .create_temporary_table("source")
+        .create_temporary_table("syslog_source")
 
 
-def register_rides_sink(st_env):
+def register_syslogs_sink(st_env):
     st_env \
         .connect(  # declare the external system to connect to
         Kafka()
@@ -107,7 +110,7 @@ def register_rides_sink(st_env):
             .field("psgCnt", DataTypes.INT())
             .field("rideTime", DataTypes.STRING())) \
         .in_append_mode() \
-        .create_temporary_table("sink")
+        .create_temporary_table("syslog_output")
 
 
 if __name__ == '__main__':
