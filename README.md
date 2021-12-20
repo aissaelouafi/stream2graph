@@ -8,7 +8,7 @@ Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. No
 ## Architecture of Stream2Graph to adress streams-based and Graph-based online machine learninge use-cases
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Architecture_Stream2Graph_Data_Pipelines.png | width=100)
 
-
+<img src="https://cloud.githubusercontent.com/assets/yourgif.gif" width="400" height="790">
 ## Services used 
 
 The used dockerized service are :
