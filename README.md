@@ -3,10 +3,10 @@
 Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
 ## Features and Services to build an Automated Data Pipeline with Stream2Graph Components
-![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Features_Stream2Graph_To_Build_DataPipeline.png)
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Features_Stream2Graph_To_Build_DataPipeline.png | width=100)
 
 ## Architecture of Stream2Graph to adress streams-based and Graph-based online machine learninge use-cases
-![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Architecture_Stream2Graph_Data_Pipelines.png)
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Architecture_Stream2Graph_Data_Pipelines.png | width=100)
 
 
 ## Services used 
