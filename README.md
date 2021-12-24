@@ -1,37 +1,46 @@
 # Stream2Graph 
-**Stream2Graph : A Dockerized Data Pipeline for Stream-based Analytics over Knowledge Graph**
+**Stream2Graph: Automated Data Pipeline for Streams-based Learning from Knowledge Graphs**
 Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
+Machine learning from industrial data is a challenging task since 1) input data is high-dimensional, 2) heterogeneous data is continuously generated from Information Systems (IS), and 3) data is continuously evolving (users activity, transaction, IT operation or network traffic). To tackle these challenges, we apply a knowledge graph and data stream approach, motivated by an industrial application in large-scale telecommunication network within a major banking group serving millions of customers (BNP Paribas). In this paper, we propose Stream2Graph, a new system based on a domain-agnostic approach to build and update an Enterprise Knowledge Graph (EKG).
+ We provide the new Stream2Graph framework as a set of automated services, that can be combined to set up a specific Dockerized data pipeline (based on Apache Kafka and Flink) for use-cases data engineering environment. The build-in functionalities can be used for incremental learning and processing of multi-modality data streams within a dynamic knowledge graph database for further graph-based and AI analytics. Stream2Graph design is suited to easily run and deploy graph-based applications on streaming data. We demonstrate the viability and effectiveness of our solution through an industrial application on a large-scale telecommunication system.
+ 
+## Features and Services to build an Automated Data Pipeline with Stream2Graph Components
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Features_Stream2Graph_To_Build_DataPipeline.png)
 
-## Data pipeline architecture
+## Architecture of Stream2Graph to adress streams-based and Graph-based online machine learninge use-cases
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Architecture_Stream2Graph_Data_Pipelines.png)
 
-How to process streams events from Kafka and update a knowledge graph data based stored in NEO4J ?
-![alt text](https://neo4j.com/labs/kafka/4.0/_images/unwind-consume.png)
+## Industrial Challenges for Data Engineering and How Stream2Grap Address them 
+![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Industrial_Challenges_Stream2Graph_Features.PNG)
 
-Overall of Stream2Graph approach to enhance Streams and Graph-based Online (machine) Learning.
-Each block is an independant tool to allow flexibility of the data pipeline which can be extended for further analytics.
-
-![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Stream2Graph_overview.png)
-
-## Features
-- Graph and Linear Data generator
-- Unstructured Data Parsing (Logstach)
-- Streams generator (from any data source)
-- Strams ingestion (Apache Kafka)
-- Graph storage (Neo4j or TigerGraph)
-- Graph Algorithms (Scikit-network, Neo4j, TigerGraph )
-- Online and Incremental Learning (River)
 
 ## Services used 
+
 The used dockerized service are :
+- Liner and Graph Data Generators
 - Kafka broker (Real-time Events & Streams ingestion)
+- Flink for streams preprocessing and incremental feature engineering (sliding windows
 - River (Online and Incremental Learning)
 - Graph Data bases Neo4j and TigerGraph
 - Zookeper 
 - Logs generator image to generate logs 
 - Fake Data generator (Graph and Logs)
 
-### How to run the the data pipeline with Docker ?
+## Repository Structure (Folders & File descriptions)
+
+### Features optional 
+- Graph and Linear Data generator
+- Unstructured Data Parsing (Logstach)
+- Streams generator (from multiple data sources)
+- Strams ingestion (Apache Kafka)
+- Graph storage (Apache AGE + PostgreSQL, Neo4j)
+- Big graph storage (JanusGraph, TigerGraph)
+- Graph Algorithms (Scikit-network, GraphTools, Neo4j, TigerGraph )
+- Distributed Graph Processing (GraphFrames, Apache Gelly) 
+- Online and Incremental Learning (River)
+
+### How to run set up or run the data pipeline using Docker or Stream 2 Graph ?
 
 To run the `stream2graph` pipeline, 
 - copy the `logs` folder (Data) to the working directory 
@@ -41,7 +50,7 @@ To run the `stream2graph` pipeline,
 
 ## Docker structure
 
-## References on Docker
+### References on Docker
 
 **Docker is a tool designed to make it easier to create, deploy, and run applications by using containers**. Containers allow a developer to package up an application with all of the parts it needs, such as libraries and other dependencies, and ship it all out as one package. By doing so, thanks to the container, the developer can rest assured that the application will run on any other Linux machine regardless of any customized settings that machine might have that could differ from the machine used for writing and testing the code. [More about docker for debveloppement](https://dev.to/amoniacou/what-is-docker-why-is-it-important-and-necessary-for-developers-part-i-39e5). Some applications of docker can be founed [here](https://www.infoworld.com/article/3310941/why-you-should-use-docker-and-containers.html). 
 
