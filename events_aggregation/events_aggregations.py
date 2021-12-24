@@ -21,12 +21,21 @@ def from_kafka_to_kafka_demo():
     # register source and sink
     register_syslogs_source(st_env)
     register_syslogs_sink(st_env)
+    
+    st_env.from_path("syslog_source") \
+        .window(Tumble.over("1.minutes").on("rowtime").alias("w"))
+        .group_by("devname, w")
+        .select("""devname as devname,
+                   count(action) as count_action,
+                   count(crlevel) as count_crlevel,
+                   w.end as event_time""")
+        .insert_into("syslog_output")
 
     # query
-    st_env.from_path("syslog_source").insert_into("syslog_output")
+    #st_env.from_path("syslog_source").insert_into("syslog_output")
 
     # execute
-    st_env.execute("2-from_kafka_to_kafka")
+    st_env.execute("events_aggregations")
 
 
 def register_syslogs_source(st_env):
@@ -60,7 +69,11 @@ def register_syslogs_source(st_env):
             DataTypes.FIELD("sentpkt", DataTypes.INT())]))) \
         .with_schema(  # declare the schema of the table
         Schema()
-            .field("time", DataTypes.TIMESTAMP())
+            .field("rowtime", DataTypes.TIMESTAMP())
+            .rowtime(
+                Rowtime()
+                    .timestamps_from_field("time")
+                    .watermarks_periodic_bounded(60000)))
             .field("devname", DataTypes.STRING())
             .field("type", DataTypes.STRING())
             .field("srcport", DataTypes.INT())
@@ -90,25 +103,19 @@ def register_syslogs_sink(st_env):
             .property("bootstrap.servers", os.getenv("KAFKA_BOOTSTRAP_SERVER"))) \
         .with_format(  # declare a format for this system
         Json()
-            .fail_on_missing_field(True)
+            .fail_on_missing_field(False)
             .schema(DataTypes.ROW([
-            DataTypes.FIELD("rideId", DataTypes.BIGINT()),
-            DataTypes.FIELD("taxiId", DataTypes.BIGINT()),
-            DataTypes.FIELD("isStart", DataTypes.BOOLEAN()),
-            DataTypes.FIELD("lon", DataTypes.FLOAT()),
-            DataTypes.FIELD("lat", DataTypes.FLOAT()),
-            DataTypes.FIELD("psgCnt", DataTypes.INT()),
-            DataTypes.FIELD("rideTime", DataTypes.STRING())
+            DataTypes.FIELD("event_time", DataTypes.TIMESTAMP()),
+            DataTypes.FIELD("devname", DataTypes.STRING()),
+            DataTypes.FIELD("count_action", DataTypes.INT()),
+            DataTypes.FIELD("count_crlevel", DataTypes.INT())
         ]))) \
         .with_schema(  # declare the schema of the table
         Schema()
-            .field("rideId", DataTypes.BIGINT())
-            .field("taxiId", DataTypes.BIGINT())
-            .field("isStart", DataTypes.BOOLEAN())
-            .field("lon", DataTypes.FLOAT())
-            .field("lat", DataTypes.FLOAT())
-            .field("psgCnt", DataTypes.INT())
-            .field("rideTime", DataTypes.STRING())) \
+            .field("event_time", DataTypes.TIMESTAMP())
+            .field("devname", DataTypes.STRING())
+            .field("count_action", DataTypes.INT())
+            .field("count_crlevel", DataTypes.INT())) \
         .in_append_mode() \
         .create_temporary_table("syslog_output")
 
