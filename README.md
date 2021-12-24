@@ -18,8 +18,8 @@ Machine learning from industrial data is a challenging task since 1) input data 
 ## Services used 
 
 The used dockerized service are :
-- Liner and Graph Data Generators
-- Kafka broker (Real-time Events & Streams ingestion)
+- Liner and Graph Data Generators : Python object to generate raw data, many data sources can be used to simulate the heterogeneous aspect of data used in production.
+- Kafka broker (Real-time Events & Streams ingestion) : Apache kafka broker for data transport in real time, the kafka topic is created by default and can handle many hundred thousand of events by minute. In this docker environment, the kafka is installed in standalone mode. We can ins
 - Flink for streams preprocessing and incremental feature engineering (sliding windows
 - River (Online and Incremental Learning)
 - Graph Data bases Neo4j and TigerGraph
