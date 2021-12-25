@@ -27,20 +27,8 @@ The used dockerized service are :
 - Logs generator image to generate logs 
 - Fake Data generator (Graph and Logs)
 
-## Repository Structure (Folders & File descriptions)
 
-### Features optional 
-- Graph and Linear Data generator
-- Unstructured Data Parsing (Logstach)
-- Streams generator (from multiple data sources)
-- Strams ingestion (Apache Kafka)
-- Graph storage (Apache AGE + PostgreSQL, Neo4j)
-- Big graph storage (JanusGraph, TigerGraph)
-- Graph Algorithms (Scikit-network, GraphTools, Neo4j, TigerGraph )
-- Distributed Graph Processing (GraphFrames, Apache Gelly) 
-- Online and Incremental Learning (River)
-
-### How to run set up or run the data pipeline using Docker or Stream 2 Graph ?
+### How to run set up or run the data pipeline using Stream2Graph ?
 
 To run the `stream2graph` pipeline, 
 - copy the `logs` folder (Data) to the working directory 
@@ -50,10 +38,6 @@ To run the `stream2graph` pipeline,
 
 The `neo4j` browser is exposed on : `localhost:7474`, The `taskmanager` is exposed on : `localhost:8088`
 
-
-## Contributing 
-
-## Docker structure
 
 ### References on Docker
 
@@ -68,3 +52,14 @@ Using Compose is basically a three-step process:
 - Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
 - Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
 - Run docker compose up and the Docker compose command starts and runs your entire app. You can alternatively run docker-compose up using the docker-compose binary.
+
+###  Optional features (services) to add or activate to set up a specific data engineering pipeline to adress use-cases 
+- Graph and Linear Data generator
+- Unstructured Data Parsing (Logstach)
+- Streams generator (from multiple data sources)
+- Strams ingestion (Apache Kafka)
+- Graph storage (Apache AGE + PostgreSQL, Neo4j)
+- Big graph storage (JanusGraph, TigerGraph)
+- Graph Algorithms (Scikit-network, GraphTools, Neo4j, TigerGraph )
+- Distributed Graph Processing (GraphFrames, Apache Gelly) 
+- Online and Incremental Learning (River)
