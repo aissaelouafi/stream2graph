@@ -18,11 +18,11 @@ Machine learning from industrial data is a challenging task since 1) input data 
 ## Services used 
 
 The used dockerized service are :
-- Liner and Graph Data Generators : Python object to generate raw data, many data sources can be used to simulate the heterogeneous aspect of data used in production.
-- Kafka broker (Real-time Events & Streams ingestion) : Apache kafka broker for data transport in real time, the kafka topic is created by default and can handle many hundred thousand of events by minute. In this docker environment, the kafka is installed in standalone mode. We can setup a kafka cluster to scale up the application. 
-- Flink for streams preprocessing and incremental feature engineering (sliding windows) : Apache flink is used for data preprocessing and incremental feature engineering in real time, the logs aggregations flink application cconsume data in real time from a Kafka topic and produce structured / aggregated data in a another kafka topic. The main advantage of using flink is his capacity to scale up easily, many parameters can be modified on docker file to add workers and scale up the application, the Flink docker image can be modified : `Dockerfile.flink`
-- River (Online and Incremental Learning) : Python framework for online and incremental learning, we consume structured data from a kafka topic and we train an online machine learning model for anomalies detection. Data are structured / aggregated using Apache Flink, the output results can be stored on a structured / semi-structured database like PostgreSQL or Elasticsearch, the River docker image can be modified : `Dockerfile.river`
-- Graph Data bases Neo4j and TigerGraph
+- Streams **Data Generators (Linear and Graph)** : Python object to generate raw data, many data sources can be used to simulate the heterogeneous aspect of data used in production.
+- **Kafka broker (Real-time Events & Streams ingestion)** : Apache kafka broker for data transport in real time, the kafka topic is created by default and can handle many hundred thousand of events by minute. In this docker environment, the kafka is installed in standalone mode. We can setup a kafka cluster to scale up the application. 
+- **Flink for streams preprocessing and incremental feature engineering** (sliding windows) : Apache flink is used for data preprocessing and incremental feature engineering in real time, the logs aggregations flink application cconsume data in real time from a Kafka topic and produce structured / aggregated data in a another kafka topic. The main advantage of using flink is his capacity to scale up easily, many parameters can be modified on docker file to add workers and scale up the application, the Flink docker image can be modified : `Dockerfile.flink`
+- **River (Online and Incremental Learning)** : Python framework for online and incremental learning, we consume structured data from a kafka topic and we train an online machine learning model for anomalies detection. Data are structured / aggregated using Apache Flink, the output results can be stored on a structured / semi-structured database like PostgreSQL or Elasticsearch, the River docker image can be modified : `Dockerfile.river`
+- **Graph Data bases** Neo4j and TigerGraph
 - Zookeper 
 - Logs generator image to generate logs 
 - Fake Data generator (Graph and Logs)
