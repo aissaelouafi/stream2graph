@@ -1,7 +1,9 @@
 # Stream2Graph 
-**Stream2Graph: Automated Data Pipeline for Streams-based Learning from Knowledge Graphs**
-Authors, M. Barry, Aissa Elouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
 
+**Stream2Graph: Automated Data Pipeline for Streams-based Learning from Knowledge Graphs**
+Authors, M. Barry, A. El Ouafi, J. Montiel, A. Bifet, R. Chiky, V. Tran, A. Nobial.
+
+**Abstract**
 Machine learning from industrial data is a challenging task since 1) input data is high-dimensional, 2) heterogeneous data is continuously generated from Information Systems (IS), and 3) data is continuously evolving (users activity, transaction, IT operation or network traffic). To tackle these challenges, we apply a knowledge graph and data stream approach, motivated by an industrial application in large-scale telecommunication network within a major banking group serving millions of customers (BNP Paribas). In this paper, we propose Stream2Graph, a new system based on a domain-agnostic approach to build and update an Enterprise Knowledge Graph (EKG).
  We provide the new Stream2Graph framework as a set of automated services, that can be combined to set up a specific Dockerized data pipeline (based on Apache Kafka and Flink) for use-cases data engineering environment. The build-in functionalities can be used for incremental learning and processing of multi-modality data streams within a dynamic knowledge graph database for further graph-based and AI analytics. Stream2Graph design is suited to easily run and deploy graph-based applications on streaming data. We demonstrate the viability and effectiveness of our solution through an industrial application on a large-scale telecommunication system.
  
