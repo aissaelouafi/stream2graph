@@ -11,7 +11,7 @@ Machine learning from industrial data is a challenging task since 1) input data 
 ## Architecture of Stream2Graph to adress streams-based and Graph-based online machine learninge use-cases
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Architecture_Stream2Graph_Data_Pipelines.png)
 
-## Industrial Challenges for Data Engineering and How Stream2Grap Address them 
+## Industrial Challenges for Data Engineering and How Stream2Graph Address them ?
 ![alt text](https://github.com/aissaelouafi/stream2graph/blob/master/Industrial_Challenges_Stream2Graph_Features.PNG)
 
 
