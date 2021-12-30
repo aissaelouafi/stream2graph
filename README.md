@@ -63,3 +63,4 @@ Using Compose is basically a three-step process:
 - Graph Algorithms (Scikit-network, GraphTools, Neo4j, TigerGraph )
 - Distributed Graph Processing (GraphFrames, Apache Gelly) 
 - Online and Incremental Learning (River)
+- Results visualization, Analytics & Monitoring (Kibana)
