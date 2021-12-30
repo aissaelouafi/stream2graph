@@ -11,14 +11,13 @@ The following personas might be interrested by this work.
 - Data engineers and DevOps practitioners building data pipelines to deploy model in large-scale and scalable environnement.
 - Industries or research lab interested in extending research algorithms to address industrial use-cases for real-time applications.
 
-***The usages : Stream2Graph can be used to dress 3 kind of applications***
+***The usages : Stream2Graph can be used to address the follwoing 3 types of applications:***
 
+1. For Data Engineers : Set up Automated Data Engineering Pipeline for streams and batch processing from multiple data sources in production. One can pick some services and tools available in the four components depending on they use-case.
 
-1. For Data engineers : Set up Automated Data Engineering Pipeline for streams and batch processing from multiple data sources in production. One can pick some services and tools available in the four components depending on they use-case.
+2. For Data Scientists : Run reproducible experiments of research methods for scientific public using the Docker package for version control by changing the generics files (in Python, River, Flink) with your custom methods or algorithms.
 
-2. For Data Scientist : Run  reproducible experiments of research methods for scientific public using the Docker package for version control by changing the generics files (in Python, River, Flink) with your custom methods or algorithms.
-
-3. For Researchers : Build novel graph and streams-based methods using a framework to train the methods under industrial and real-word settings for online machine learning and knowledge graph applications.
+3. For Researchers : Build novel graph and streams-based methods (online and incremental learning) using a framework to train the methods under industrial and real-word settings for online machine learning and knowledge graph applications.
 
 ### Abstract
 Machine learning from industrial data is a challenging task since 1) input data is high-dimensional, 2) heterogeneous data is continuously generated from Information Systems (IS), and 3) data is continuously evolving (users activity, transaction, IT operation or network traffic). To tackle these challenges, we apply a knowledge graph and data stream approach, motivated by an industrial application in large-scale telecommunication network within a major banking group serving millions of customers (BNP Paribas). In this paper, we propose Stream2Graph, a new system based on a domain-agnostic approach to build and update an Enterprise Knowledge Graph (EKG).
